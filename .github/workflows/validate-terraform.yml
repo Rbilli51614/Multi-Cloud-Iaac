@@ -1,0 +1,26 @@
+name: tf-validate
+
+on:
+  pull_request:
+    paths:
+      - '**.tf'
+      - '.github/workflows/validate-terraform.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+      - name: Validate AWS stack
+        run: |
+          cd stacks/aws
+          terraform init -backend=false
+          terraform validate
+      - name: Validate GCP stack
+        run: |
+          cd stacks/gcp
+          terraform init -backend=false
+          terraform validate
