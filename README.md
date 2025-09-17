@@ -2,8 +2,6 @@ Multi-Cloud Infrastructure as Code (Terraform AWS + GCP VPC-EC2-Load Balancer)
 
 ## Folder Structure
 
-## Folder Structure
-
 ```multi-cloud-iac/
 ├─ README.md
 ├─ LICENSE
