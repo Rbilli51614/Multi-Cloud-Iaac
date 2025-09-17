@@ -1,0 +1,6 @@
+project     = "your-gcp-project-id"
+region      = "us-central1"
+zone        = "us-central1-a"
+ssh_cidr    = ""99.138.42.150/32"
+subnet_cidr = "10.20.1.0/24"
+vpc_name    = "gcp-vpc"
