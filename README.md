@@ -2,7 +2,9 @@ Multi-Cloud Infrastructure as Code (Terraform AWS + GCP VPC-EC2-Load Balancer)
 
 ## Folder Structure
 
-multi-cloud-iac/
+## Folder Structure
+
+```multi-cloud-iac/
 ├─ README.md
 ├─ LICENSE
 ├─ .gitignore
@@ -38,6 +40,7 @@ multi-cloud-iac/
 └─ .github/
    └─ workflows/
       └─ validate-terraform.yml
+```
 ---
 ## Project Overview
 - **AWS:** 1 VPC (2 public subnets), EC2 in ASG optional (start with single EC2)
