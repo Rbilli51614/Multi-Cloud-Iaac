@@ -13,6 +13,14 @@ module "lb" {
   region  = var.region
   zone    = var.zone
   subnet  = module.net.subnet
+  instances = [module.compute.instance_self_link]  # ✅ pass in from compute
+}
+
+module "compute" {
+  source = "../../modules/gcp/compute"
+  project = var.project
+  zone    = var.zone
+  subnet  = module.net.subnet_self_link
 }
 
 output "gcp_lb_ip" { value = module.lb.lb_ip }
