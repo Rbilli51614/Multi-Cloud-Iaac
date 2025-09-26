@@ -1,21 +1,27 @@
-# Terraform
+# Terraform directories
 .terraform/
 *.tfstate
 *.tfstate.*
-crash.log
-terraform.tfvars
-*.tfvars.json
 .terraform.lock.hcl
 
+# Local environment files
+*.tfvars
+*.tfvars.json
+terraform.tfvars
 
-# Python
-__pycache__/
-*.pyc
-.venv/
+# Crash logs
+crash.log
 
-# OS
+# Backup and temporary files
+*.backup
+*.swp
+*.tmp
+
+# OS-specific files
 .DS_Store
 Thumbs.db
 
-#gcloud JSON
-*.JSON
+# IDE/editor files
+.vscode/
+.idea/
+*.iml
