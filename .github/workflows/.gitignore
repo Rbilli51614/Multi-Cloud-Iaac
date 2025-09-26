@@ -1,26 +1,12 @@
 # Terraform
-.terraform/**
+.terraform/
 *.tfstate
 *.tfstate.*
 crash.log
-*.tfvars
-override.tf
-override.tf.json
+terraform.tfvars
+*.tfvars.json
 .terraform.lock.hcl
-**.terraform
-.terraform/
-./terraform
-/.terraform/providers
-.terraform-provider-google_v5.45.2_x5
-modules/gcp/compute/.terraform/
-stacks/aws/.terraform/providers/
-stacks/gcp/.terraform/providers/
-*terraform-provider-google_v7.3.0_x5
-*terraform-provider-google_v5.45.2_x5
-*terraform-provider-aws_v5.100.0_x5
-/modules/gcp/compute/.terraform/providers/registry.terraform.io/hashicorp/google/7.3.0/darwin_arm64/terraform-provider-google_v7.3.0_x5
-/stacks/aws/.terraform/providers/registry.terraform.io/hashicorp/aws/5.100.0/darwin_arm64/terraform-provider-aws_v5.100.0_x5
-/stacks/gcp/.terraform/providers/registry.terraform.io/hashicorp/google/5.45.2/darwin_arm64/terraform-provider-google_v5.45.2_x5
+corp/google/5.45.2/darwin_arm64/terraform-provider-google_v5.45.2_x5
 
 # Python
 __pycache__/
