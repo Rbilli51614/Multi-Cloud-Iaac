@@ -12,9 +12,9 @@ override.tf.json
 ./terraform
 /.terraform/providers
 .terraform-provider-google_v5.45.2_x5
-modules/gcp/compute/.terraform/
-stacks/aws/.terraform/providers/
-stacks/gcp/.terraform/providers/
+/modules/gcp/compute/.terraform/
+/stacks/aws/.terraform/providers/
+/stacks/gcp/.terraform/providers/
 *terraform-provider-google_v7.3.0_x5
 *terraform-provider-google_v5.45.2_x5
 *terraform-provider-aws_v5.100.0_x5
