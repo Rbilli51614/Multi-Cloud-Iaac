@@ -8,7 +8,7 @@ override.tf
 override.tf.json
 .terraform.lock.hcl
 **.terraform
-*/.terraform
+.terraform/
 ./terraform
 /.terraform/providers
 .terraform-provider-google_v5.45.2_x5
