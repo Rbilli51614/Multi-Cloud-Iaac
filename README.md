@@ -67,3 +67,30 @@
 ## Requirements
 	- Terraform ≥ 1.6 AWS CLI, GCloud SDK.
 	- AWS credentials (aws configure) and a GCP project with billing enabled (gcloud auth application-default login).
+___
+
+## Steps
+
+### 1) Configure minimal variables
+
+Copy and edit vars:
+
+```cp stacks/aws/terraform.tfvars.example stacks/aws/terraform.tfvars cp stacks/gcp/terraform.tfvars.example stacks/gcp/terraform.tfvars```
+
+Fill in your CIDR/IP and GCP project/region.
+
+### 2) Provision AWS
+
+```cd stacks/aws terraform init terraform apply -auto-approve```
+
+### 3) Provision GCP
+
+```cd ../gcp terraform init terraform apply -auto-approve```
+
+### 4) Verify
+
+- Grab the AWS ALB DNS name and the GCP LB IP/output from Terraform.
+
+	
+- Run:
+    ```python3 scripts/healthcheck.py --aws <ALB-DNS> --gcp <GCP-LB-IP-OR-DOMAIN>```
