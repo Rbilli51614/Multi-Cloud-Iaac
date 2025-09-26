@@ -25,3 +25,8 @@ variable "subnet" {
   description = "The self_link of the subnet to attach instances to"
   type        = string
 }
+
+variable "credentials_file" {
+  description = "Path to the service account JSON key file"
+  type        = string
+}

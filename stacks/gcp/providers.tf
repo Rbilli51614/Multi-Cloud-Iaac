@@ -6,8 +6,9 @@ terraform {
   }
   required_version = ">= 1.6"
 }
-
 provider "google" {
-  project = var.project
-  region  = var.region
+  project     = var.project
+  region      = var.region
+  zone        = var.zone
+  credentials = file(var.credentials_file)
 }

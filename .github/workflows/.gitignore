@@ -1,5 +1,5 @@
 # Terraform
-**/.terraform/*
+.terraform/**
 *.tfstate
 *.tfstate.*
 crash.log
@@ -7,7 +7,11 @@ crash.log
 override.tf
 override.tf.json
 .terraform.lock.hcl
-
+**.terraform
+*/.terraform
+./terraform
+/.terraform/providers
+.terraform-provider-google_v5.45.2_x5
 # Python
 __pycache__/
 *.pyc
@@ -16,3 +20,6 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+#gcloud JSON
+*.JSON
