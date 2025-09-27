@@ -3,6 +3,9 @@
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+terraform.tfvars
 
 # Local environment files
 *.tfvars
