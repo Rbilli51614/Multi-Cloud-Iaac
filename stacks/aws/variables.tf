@@ -10,14 +10,5 @@ variable "public_subnets" {
     type = list(string) 
     default = ["10.10.1.0/24","10.10.2.0/24"] 
     }
-variable "ssh_key_name" { 
-    type = string 
-    }
-variable "ingress_cidr_ssh" { 
-    type = string 
-    } # e.g., "YOUR_IP/32"
-
-variable "vpc_id" {
-    type = string
-    default = "aws_vpc.this.id"
-}
+variable "ssh_key_name" { type = string }
+variable "ingress_cidr_ssh" { type = string } # e.g., "YOUR_IP/32"

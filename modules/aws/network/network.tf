@@ -12,24 +12,15 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.this.id
 }
 
-data "aws_availability_zones" "available" {
-  state = "available"
-}
-
 resource "aws_subnet" "public" {
-  for_each = { for idx, cidr in var.public_subnets : idx => cidr }
-
+  for_each = toset(var.public_subnets)
   vpc_id                  = aws_vpc.this.id
   cidr_block              = each.value
   map_public_ip_on_launch = true
-
-  # spread subnets across AZs dynamically
-  availability_zone = data.aws_availability_zones.available.names[each.key]
-
-  tags = {
-    Name = "public-${each.key}"
-  }
+  availability_zone       = "${var.region}${substr(each.key, -1, 1)}"
+  tags = { Name = "public-${each.key}" }
 }
+
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
   route { 

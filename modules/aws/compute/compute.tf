@@ -10,8 +10,9 @@ data "aws_ami" "al2" {
     values = ["al2023-ami-*-x86_64"] 
     }
 }
+
 resource "aws_security_group" "web" {
-    name   = "web"
+  name   = "sg-web"
   vpc_id = var.vpc_id
   ingress { 
     from_port=80 
@@ -33,19 +34,16 @@ resource "aws_security_group" "web" {
     }
 }
 
-variable "vpc_id" { 
-  type = string 
-  default = "aws_vpc.this.id"
-  }
+variable "vpc_id" { type = string }
 
 resource "aws_instance" "web" {
   ami                         = data.aws_ami.al2.id
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.web.id]
-  user_data                   = file("${path.module}/../../../scripts/bootstrap_aws.sh")
+  user_data                   = file("${path.module}/../../../../scripts/bootstrap_aws.sh")
   tags = { Name = "aws-web" }
 }
 

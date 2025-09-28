@@ -19,6 +19,5 @@ module "alb" {
   subnet_ids          = module.net.public_subnet_ids
   target_instance_id  = module.compute.instance_id
 }
-output "alb_dns" { 
-  value = module.alb.alb_dns_name 
-  }
+
+
