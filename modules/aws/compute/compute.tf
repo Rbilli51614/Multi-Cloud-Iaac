@@ -5,15 +5,20 @@ variable "ingress_cidr_ssh" { type = string }
 data "aws_ami" "al2" {
   most_recent = true
   owners      = ["amazon"]
+<<<<<<< HEAD
   filter { 
     name = "name" 
     values = ["al2023-ami-*-x86_64"] 
     }
+=======
+  filter { name = "name" values = ["al2023-ami-*-x86_64"] }
+>>>>>>> a240d67466d6af8db9b0490d6e6bdfe53929bc9e
 }
 
 resource "aws_security_group" "web" {
   name   = "sg-web"
   vpc_id = var.vpc_id
+<<<<<<< HEAD
   ingress { 
     from_port=80 
     to_port=80 
@@ -32,6 +37,11 @@ resource "aws_security_group" "web" {
     protocol="-1" 
     cidr_blocks=["0.0.0.0/0"] 
     }
+=======
+  ingress { from_port=80 to_port=80 protocol="tcp" cidr_blocks=["0.0.0.0/0"] }
+  ingress { from_port=22 to_port=22 protocol="tcp" cidr_blocks=[var.ingress_cidr_ssh] }
+  egress  { from_port=0 to_port=0 protocol="-1" cidr_blocks=["0.0.0.0/0"] }
+>>>>>>> a240d67466d6af8db9b0490d6e6bdfe53929bc9e
 }
 
 variable "vpc_id" { type = string }

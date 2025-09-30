@@ -6,10 +6,15 @@ resource "google_compute_instance" "web" {
   name         = "gcp-web"
   machine_type = "e2-micro"
   zone         = var.zone
+<<<<<<< HEAD
   boot_disk { 
     initialize_params { image = "debian-cloud/debian-12" } 
   }
   network_interface { 
+=======
+  boot_disk { initialize_params { image = "debian-cloud/debian-12" } }
+  network_interface {
+>>>>>>> a240d67466d6af8db9b0490d6e6bdfe53929bc9e
     subnetwork = var.subnet
     access_config {}
   }

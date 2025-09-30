@@ -23,10 +23,14 @@ resource "aws_subnet" "public" {
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
+<<<<<<< HEAD
   route { 
     cidr_block = "0.0.0.0/0" 
     gateway_id = aws_internet_gateway.igw.id 
     }
+=======
+  route { cidr_block = "0.0.0.0/0" gateway_id = aws_internet_gateway.igw.id }
+>>>>>>> a240d67466d6af8db9b0490d6e6bdfe53929bc9e
 }
 
 resource "aws_route_table_association" "a" {
