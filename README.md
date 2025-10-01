@@ -93,4 +93,10 @@ Fill in your CIDR/IP and GCP project/region.
 
 	
 - Run:
-    ```python3 scripts/healthcheck.py --aws <ALB-DNS> --gcp <GCP-LB-IP-OR-DOMAIN>```
+'''python3 scripts/healthcheck.py \
+>   --aws "<aws load balancer url>" \
+>   --gcp "<gcp dns ip address>" '''
+
+## you should get the following
+### [AWS] 200 OK
+### [GCP] 200 OK

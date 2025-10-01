@@ -8,11 +8,19 @@ module "net" {
 }
 
 module "lb" {
-  source  = "../../modules/gcp/lb"
+  source = "../../modules/gcp/lb"
   project = var.project
   region  = var.region
   zone    = var.zone
-  subnet  = module.net.subnet
+  subnet  = var.subnet
+  instance_self_link = module.compute.web_instance_self_link
 }
+module "compute" {
+  source  = "../../modules/gcp/compute"   # path to your compute module
+  project = var.project
+  zone    = var.zone
+  subnet  = module.net.subnet_self_link  # pass the real subnet self_link
+}
+
 
 output "gcp_lb_ip" { value = module.lb.lb_ip }

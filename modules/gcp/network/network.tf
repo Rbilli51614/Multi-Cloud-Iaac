@@ -46,6 +46,6 @@ variable "ssh_cidr" { type = string }
 output "network" { value = google_compute_network.vpc.name }
 output "subnet"  { value = google_compute_subnetwork.subnet.name }
 output "subnet_self_link" {
-  description = "Self link of the primary subnet"
-  value       = google_compute_subnetwork.subnet.self_link
+  value = google_compute_subnetwork.subnet.self_link
 }
+

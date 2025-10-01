@@ -1,7 +1,26 @@
 variable "vpc_cidr" { type = string }
-variable "public_subnets" { type = list(string) }
-variable "region" { type = string }
+variable "region" { type = string }# Get all available AZs in the region
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+# Example: public subnets
+variable "public_subnets" {
+  type    = list(string)
+  default = ["10.10.1.0/24", "10.10.2.0/24"]
+} 
+# Create subnets dynamically across AZs
+resource "aws_subnet" "public" {
+  for_each = { for idx, cidr in var.public_subnets : cidr => idx }
 
+  vpc_id                  = aws_vpc.this.id
+  cidr_block              = each.key
+  availability_zone       = data.aws_availability_zones.available.names[tonumber(each.value)]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "public-${each.key}"
+  }
+}
 resource "aws_vpc" "this" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -12,25 +31,12 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.this.id
 }
 
-resource "aws_subnet" "public" {
-  for_each = toset(var.public_subnets)
-  vpc_id                  = aws_vpc.this.id
-  cidr_block              = each.value
-  map_public_ip_on_launch = true
-  availability_zone       = "${var.region}${substr(each.key, -1, 1)}"
-  tags = { Name = "public-${each.key}" }
-}
-
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
-<<<<<<< HEAD
   route { 
     cidr_block = "0.0.0.0/0" 
     gateway_id = aws_internet_gateway.igw.id 
     }
-=======
-  route { cidr_block = "0.0.0.0/0" gateway_id = aws_internet_gateway.igw.id }
->>>>>>> a240d67466d6af8db9b0490d6e6bdfe53929bc9e
 }
 
 resource "aws_route_table_association" "a" {
