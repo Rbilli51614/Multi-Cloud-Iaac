@@ -37,3 +37,4 @@ gcp-outputs:
 validate: aws-validate gcp-validate
 apply: aws-apply gcp-apply
 destroy: aws-destroy gcp-destroy
+plan: aws-plan gcp-plan
