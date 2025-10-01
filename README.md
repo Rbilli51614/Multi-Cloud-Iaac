@@ -1,5 +1,35 @@
 # Multi-Cloud Infrastructure as Code (Terraform AWS + GCP VPC-EC2-Load Balancer)
 
+## Topics
+terraform, aws, gcp, iac, devops, sre, multicloud
+
+## Badges
+[![Terraform](https://img.shields.io/badge/Terraform-1.7.5-blue?logo=terraform&logoColor=white)](https://www.terraform.io/)  
+[![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)  
+[![GCP](https://img.shields.io/badge/GCP-Cloud-blue?logo=google-cloud&logoColor=white)](https://cloud.google.com/)  
+[![MIT License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
+
+## Overview
+This project deploys AWS and GCP infrastructure using Terraform. It is designed for multi-cloud, DevOps, and SRE use cases.
+
+## Terraform Stacks
+- **AWS Stack:** `stacks/aws`
+- **GCP Stack:** `stacks/gcp`
+
+## Usage
+Use the included Makefile to initialize, apply, or destroy stacks:
+
+```bash
+# AWS
+make aws-init
+make aws-apply
+make aws-destroy
+
+# GCP
+make gcp-init
+make gcp-apply
+make gcp-destroy
+
 ## Folder Structure
 
 ```multi-cloud-iac/
@@ -62,12 +92,10 @@
 
 
 
-
 ---
 ## Requirements
 	- Terraform ≥ 1.6 AWS CLI, GCloud SDK.
 	- AWS credentials (aws configure) and a GCP project with billing enabled (gcloud auth application-default login).
-___
 
 ## Steps
 
@@ -93,10 +121,17 @@ Fill in your CIDR/IP and GCP project/region.
 
 	
 - Run:
-'''python3 scripts/healthcheck.py \
->   --aws "<aws load balancer url>" \
->   --gcp "<gcp dns ip address>" '''
+
+``` python3 scripts/healthcheck.py \
+
+> --aws "<aws load balancer url>" \
+
+> --gcp "<gcp dns ip address>" ```
+
+  
 
 ## you should get the following
+
 ### [AWS] 200 OK
+
 ### [GCP] 200 OK
