@@ -15,6 +15,9 @@ aws-destroy:
 aws-validate:
 	cd $(AWS_DIR) && terraform init -backend=false && terraform validate
 
+aws-plan:
+	cd $(AWS_DIR) && terraform plan
+
 aws-outputs:
 	cd $(AWS_DIR) && terraform output
 
@@ -29,6 +32,9 @@ gcp-destroy:
 
 gcp-validate:
 	cd $(GCP_DIR) && terraform init -backend=false && terraform validate
+
+gcp-plan:
+	cd $(GCP_DIR) && terraform plan
 
 gcp-outputs:
 	cd $(GCP_DIR) && terraform output
